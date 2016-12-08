@@ -1,20 +1,20 @@
-# DrawingApp
-Simple Drawing App written in Swift 3 and Xcode 8. 
+# SimpleDrawingApp
+Simple Drawing App written in Swift 3 and Xcode 8.
+Simple Drawing App written in Swift 3 and Xcode 8.
 
-This repository complements a series called 'Make a Drawing App' on Youtube,where you find Swift 3 tutorials over there.
-Feel free to check it out!
-My Youtube channel (BR Studio - Coding) link : https://www.youtube.com/channel/UClmRwdRb2PC6D3gJM-fpYUw
+Please go to your corresponding branch to retrieve the neccesary resources file for your needs. 
+Check out my Youtube channel(BR Studio - Coding) for more information: https://www.youtube.com/channel/UClmRwdRb2PC6D3gJM-fpYUw
 
-#Progress
-<img width="370" alt="screen shot 2016-09-19 at 11 52 28 am" src="https://cloud.githubusercontent.com/assets/19306879/18622273/93f777fa-7e5f-11e6-86f5-742c763b92c9.png">
+#Progress and Features
+<img width="374" alt="screen shot 2016-09-21 at 7 06 41 pm" src="https://cloud.githubusercontent.com/assets/19306879/18708656/9486ca1a-802e-11e6-82a3-e5a692bb8c60.png">
 
-- Primitive and Simple Drawing
+- Implemented a neat user interface,added reset functionality and some simple colour presets.
+- Simple and primitive drawing
 
-#TO BE IMPLEMENTED
+#TODO
 - Share your image via Facebook using Social Framework or UIActivityViewController
 - Erase parts of your drawing
-- Reset your drawing
 - Save your artwork into your photos(and redirect users to Settings page if not enabled app to access photos)
-- Provide some colour presets.
 - Create a settings view controller to add more customization(such as change brush size,colours etc.)
-
+- (NEW) Make a paintbrush follow the user's hand as they draw,allowing for greater interaction)
+- (NEW) Make an eraser do the same thing provided they have chosen the eraser tool.
