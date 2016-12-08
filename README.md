@@ -14,7 +14,7 @@ My Youtube channel (BR Studio - Coding) link : https://www.youtube.com/channel/U
 - Share your image via Facebook using Social Framework or UIActivityViewController
 - Erase parts of your drawing
 - Reset your drawing
-- Save your artwork into your photos(and redirect users to Settings page if not enabled app to access photos)
+- Save your artwork into your photos
 - Provide some colour presets.
 - Create a settings view controller to add more customization(such as change brush size,colours etc.)
 
