@@ -9,11 +9,15 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet var imageView: UIImageView!
     
     var lastPoint = CGPoint.zero
     var swiped = false
+    
+    var red:CGFloat = 0.0
+    var green:CGFloat = 0.0
+    var blue:CGFloat = 0.0
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -38,7 +42,7 @@ class ViewController: UIViewController {
         context?.setBlendMode(CGBlendMode.normal)
         context?.setLineCap(CGLineCap.round)
         context?.setLineWidth(5)
-        context?.setStrokeColor(UIColor(red: 0, green: 0, blue: 0, alpha: 1.0).cgColor)
+        context?.setStrokeColor(UIColor(red: red, green: green, blue: blue, alpha: 1.0).cgColor)
         
         context?.strokePath()
         
@@ -62,11 +66,41 @@ class ViewController: UIViewController {
             drawLines(fromPoint: lastPoint, toPoint: lastPoint)
         }
     }
+    @IBAction func reset(_ sender: AnyObject) {
+        self.imageView.image = nil
+    }
+    @IBAction func save(_ sender: AnyObject) {
+    }
+    @IBAction func erase(_ sender: AnyObject) {
+    }
+    @IBAction func settings(_ sender: AnyObject) {
+    }
+    
+    @IBAction func colorsPicked(_ sender: AnyObject) {
+        if sender.tag == 0 {
+            (red,green,blue) = (1,0,0)
+        } else if sender.tag == 1 {
+            (red,green,blue) = (0,1,0)
+        } else if sender.tag == 2 {
+            (red,green,blue) = (0,0,1)
+        } else if sender.tag == 3 {
+            (red,green,blue) = (1,0,1)
+        } else if sender.tag == 4 {
+            (red,green,blue) = (1,1,0)
+        } else if sender.tag == 5 {
+            (red,green,blue) = (0,1,1)
+        } else if sender.tag == 6 {
+            (red,green,blue) = (1,1,1)
+        } else if sender.tag == 7 {
+            (red,green,blue) = (0,0,0)
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
 
