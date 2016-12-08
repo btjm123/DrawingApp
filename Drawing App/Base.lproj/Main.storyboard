@@ -178,6 +178,7 @@
                     </view>
                     <connections>
                         <outlet property="imageView" destination="ctH-rB-ZS5" id="R2P-gc-scd"/>
+                        <outlet property="toolIcon" destination="8BT-J0-AkJ" id="WEM-5S-ZA3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

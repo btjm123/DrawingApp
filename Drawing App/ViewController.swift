@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet var imageView: UIImageView!
+    @IBOutlet var toolIcon: UIButton!
     
     var lastPoint = CGPoint.zero
     var swiped = false
@@ -18,9 +19,17 @@ class ViewController: UIViewController {
     var red:CGFloat = 0.0
     var green:CGFloat = 0.0
     var blue:CGFloat = 0.0
+    
+    var tool:UIImageView!
+    var isDrawing = true
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        tool = UIImageView()
+        tool.frame = CGRect(x: self.view.bounds.size.width, y: self.view.bounds.size.height, width: 38, height: 38)
+        tool.image = #imageLiteral(resourceName: "paintBrush")
+        self.view.addSubview(tool)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -38,6 +47,7 @@ class ViewController: UIViewController {
         
         context?.move(to: CGPoint(x: fromPoint.x, y: fromPoint.y))
         context?.addLine(to: CGPoint(x: toPoint.x, y: toPoint.y))
+        tool.center = toPoint
         
         context?.setBlendMode(CGBlendMode.normal)
         context?.setLineCap(CGLineCap.round)
@@ -70,8 +80,25 @@ class ViewController: UIViewController {
         self.imageView.image = nil
     }
     @IBAction func save(_ sender: AnyObject) {
+        if let image = imageView.image {
+            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        }
     }
     @IBAction func erase(_ sender: AnyObject) {
+        
+        if (isDrawing) {
+            (red,green,blue) = (1,1,1)
+            tool.image = #imageLiteral(resourceName: "EraserIcon")
+            toolIcon.setImage(#imageLiteral(resourceName: "paintBrush"), for: .normal)
+            
+        } else {
+            (red,green,blue) = (0,0,0)
+            tool.image = #imageLiteral(resourceName: "paintBrush")
+            toolIcon.setImage(#imageLiteral(resourceName: "EraserIcon"), for: .normal)
+        }
+        
+        isDrawing = !isDrawing
+        
     }
     @IBAction func settings(_ sender: AnyObject) {
     }
