@@ -10,11 +10,12 @@ Check out my Youtube channel(BR Studio - Coding) for more information: https://w
 
 - Implemented a neat user interface,added reset functionality and some simple colour presets.
 - Simple and primitive drawing
+- (NEW) Make a paintbrush follow the user's hand as they draw,allowing for greater interaction)
+- (NEW) Make an eraser do the same thing provided they have chosen the eraser tool.
+- (NEW) Erase parts of your drawing
+- (NEW) Save your artwork into your photos
 
 #TODO
 - Share your image via Facebook using Social Framework or UIActivityViewController
-- Erase parts of your drawing
-- Save your artwork into your photos(and redirect users to Settings page if not enabled app to access photos)
 - Create a settings view controller to add more customization(such as change brush size,colours etc.)
-- (NEW) Make a paintbrush follow the user's hand as they draw,allowing for greater interaction)
-- (NEW) Make an eraser do the same thing provided they have chosen the eraser tool.
+
