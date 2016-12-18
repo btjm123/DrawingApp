@@ -14,6 +14,8 @@ Check out my Youtube channel(BR Studio - Coding) for more information: https://w
 - (NEW) Make an eraser do the same thing provided they have chosen the eraser tool.
 - (NEW) Erase parts of your drawing
 - (NEW) Save your artwork into your photos
+- (NEW) Set Up the user interface for the Settings View Controller with Auto Layout.
+
 
 #TODO
 - Share your image via Facebook using Social Framework or UIActivityViewController
