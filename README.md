@@ -10,7 +10,7 @@ Check out my Youtube channel(BR Studio - Coding) for more information: https://w
 
 - Implemented a neat user interface,added reset functionality and some simple colour presets.
 - Simple and primitive drawing
-- (Make a paintbrush follow the user's hand as they draw,allowing for greater interaction)
+- Make a paintbrush follow the user's hand as they draw,allowing for greater interaction)
 - Make an eraser do the same thing provided they have chosen the eraser tool.
 - Erase parts of your drawing
 - Save your artwork into your photos
