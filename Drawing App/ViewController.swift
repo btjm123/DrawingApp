@@ -22,6 +22,8 @@ class ViewController: UIViewController {
     
     var tool:UIImageView!
     var isDrawing = true
+    var selectedImage:UIImage!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -30,6 +32,7 @@ class ViewController: UIViewController {
         tool.frame = CGRect(x: self.view.bounds.size.width, y: self.view.bounds.size.height, width: 38, height: 38)
         tool.image = #imageLiteral(resourceName: "paintBrush")
         self.view.addSubview(tool)
+    
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -80,9 +83,28 @@ class ViewController: UIViewController {
         self.imageView.image = nil
     }
     @IBAction func save(_ sender: AnyObject) {
-        if let image = imageView.image {
-            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-        }
+        
+        let actionSheet = UIAlertController(title: "Pick your option", message: "", preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Pick an image", style: .default, handler: { (_) in
+            
+            let imagePicker = UIImagePickerController()
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.allowsEditing = false
+            imagePicker.delegate = self
+            
+            self.present(imagePicker, animated: true, completion: nil)
+            
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Save your drawing", style: .default, handler: { (_) in
+            if let image = self.imageView.image {
+                UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+            }
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+        
+        present(actionSheet, animated: true, completion: nil)
+        
     }
     @IBAction func erase(_ sender: AnyObject) {
         
@@ -128,6 +150,55 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        let settingsVC = segue.destination as! SettingsVC
+        settingsVC.delegate = self
+        settingsVC.red = red
+        settingsVC.green = green
+        settingsVC.blue = blue
+    }
+    
     
 }
+
+extension ViewController:UINavigationControllerDelegate,UIImagePickerControllerDelegate,SettingsVCDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let imagePicked = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            // We got the user's image
+            self.selectedImage = imagePicked
+            self.imageView.image = selectedImage
+            
+            dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func settingsViewControllerDidFinish(_ settingsVC: SettingsVC) {
+        self.red = settingsVC.red
+        self.green = settingsVC.green
+        self.blue = settingsVC.blue
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
