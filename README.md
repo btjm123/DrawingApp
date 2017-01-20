@@ -10,14 +10,16 @@ Check out my Youtube channel(BR Studio - Coding) for more information: https://w
 
 - Implemented a neat user interface,added reset functionality and some simple colour presets.
 - Simple and primitive drawing
-- (NEW) Make a paintbrush follow the user's hand as they draw,allowing for greater interaction)
-- (NEW) Make an eraser do the same thing provided they have chosen the eraser tool.
-- (NEW) Erase parts of your drawing
-- (NEW) Save your artwork into your photos
-- (NEW) Set Up the user interface for the Settings View Controller with Auto Layout.
+- Make a paintbrush follow the user's hand as they draw,allowing for greater interaction
+- Make an eraser do the same thing provided they have chosen the eraser tool.
+- Erase parts of your drawing
+- Save your artwork into your photos
+- Set Up the user interface for the Settings View Controller with Auto Layout.
+- (NEW) Passing data between ViewController and SettingsVC and vice versa.
+- (NEW) Import an image and draw on the image,rendering as an image as a whole(like SnapChat)
 
 
 #TODO
 - Share your image via Facebook using Social Framework or UIActivityViewController
-- Create a settings view controller to add more customization(such as change brush size,colours etc.)
+- (WORK IN PROGRESS) Create a settings view controller to add more customization(such as change brush size,colours etc.)
 
