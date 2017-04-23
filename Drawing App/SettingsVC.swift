@@ -28,6 +28,8 @@ class SettingsVC: UIViewController {
     var red:CGFloat = 0.0
     var green:CGFloat = 0.0
     var blue:CGFloat = 0.0
+    var brushSize:CGFloat = 5.0
+    var opacityValue:CGFloat = 1.0
     
     var delegate:SettingsVCDelegate?
     
@@ -44,7 +46,7 @@ class SettingsVC: UIViewController {
         greenSlider.value = Float(green)
         greenLabel.text = String(Int(greenSlider.value * 255))
         
-        blueSlider.value = Float(red)
+        blueSlider.value = Float(blue)
         blueLabel.text = String(Int(blueSlider.value * 255))
     }
 
@@ -61,8 +63,14 @@ class SettingsVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     @IBAction func brushSizeChanged(_ sender: Any) {
+        let slider = sender as! UISlider
+        brushSize = CGFloat(slider.value)
+        drawPreview(red: red, green: green, blue: blue)
     }
     @IBAction func opacityChanged(_ sender: Any) {
+        let slider = sender as! UISlider
+        opacityValue = CGFloat(slider.value)
+        drawPreview(red: red, green: green, blue: blue)
     }
     @IBAction func redSliderChanged(_ sender: Any) {
         
@@ -86,8 +94,23 @@ class SettingsVC: UIViewController {
     }
     
     func drawPreview (red:CGFloat,green:CGFloat,blue:CGFloat) {
-        imageView.backgroundColor = UIColor(red: red, green: green, blue: blue, alpha: 1.0)
+        UIGraphicsBeginImageContext(imageView.frame.size)
+        let context = UIGraphicsGetCurrentContext()
+        
+        context?.setStrokeColor(UIColor(red: red, green: green, blue: blue, alpha: opacityValue).cgColor)
+        context?.setLineWidth(brushSize)
+        context?.setLineCap(CGLineCap.round)
+        
+        context?.move(to: CGPoint(x:70, y:70))
+        context?.addLine(to: CGPoint(x: 70, y: 70))
+        context?.strokePath()
+        
+        imageView.image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
     }
+    
+    
 
     /*
     // MARK: - Navigation

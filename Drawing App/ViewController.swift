@@ -19,6 +19,8 @@ class ViewController: UIViewController {
     var red:CGFloat = 0.0
     var green:CGFloat = 0.0
     var blue:CGFloat = 0.0
+    var brushSize:CGFloat = 5.0
+    var opacityValue:CGFloat = 1.0
     
     var tool:UIImageView!
     var isDrawing = true
@@ -37,7 +39,6 @@ class ViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         swiped = false
-        
         if let touch = touches.first {
             lastPoint = touch.location(in: self.view)
         }
@@ -54,8 +55,8 @@ class ViewController: UIViewController {
         
         context?.setBlendMode(CGBlendMode.normal)
         context?.setLineCap(CGLineCap.round)
-        context?.setLineWidth(5)
-        context?.setStrokeColor(UIColor(red: red, green: green, blue: blue, alpha: 1.0).cgColor)
+        context?.setLineWidth(brushSize)
+        context?.setStrokeColor(UIColor(red: red, green: green, blue: blue, alpha: opacityValue).cgColor)
         
         context?.strokePath()
         
@@ -69,7 +70,7 @@ class ViewController: UIViewController {
         if let touch = touches.first {
             let currentPoint = touch.location(in: self.view)
             drawLines(fromPoint: lastPoint, toPoint: currentPoint)
-            
+    
             lastPoint = currentPoint
         }
     }
@@ -158,6 +159,8 @@ class ViewController: UIViewController {
         settingsVC.red = red
         settingsVC.green = green
         settingsVC.blue = blue
+        settingsVC.brushSize = brushSize
+        settingsVC.opacityValue = opacityValue
     }
     
     
@@ -182,6 +185,9 @@ extension ViewController:UINavigationControllerDelegate,UIImagePickerControllerD
         self.red = settingsVC.red
         self.green = settingsVC.green
         self.blue = settingsVC.blue
+        self.brushSize = settingsVC.brushSize
+        self.opacityValue = settingsVC.opacityValue
+
     }
 }
 
